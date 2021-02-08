@@ -22,8 +22,7 @@ public class ShortUrlController {
 	@PostMapping("/submit")
 	public ResponseEntity<GenerateUrlResponse> generateUrl(@RequestBody GenerateUrlRequest request){
 		GenerateUrlResponse generateResponse = new GenerateUrlResponse();
-		generateResponse = generateUrlService.createShortUrl(request);
-		return new ResponseEntity<>(generateResponse,HttpStatus.ACCEPTED);
+		return generateUrlService.createShortUrl(request);
 	}
 	
 	@GetMapping("/m/{url}")

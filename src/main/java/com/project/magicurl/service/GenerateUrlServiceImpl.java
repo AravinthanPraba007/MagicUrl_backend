@@ -1,10 +1,14 @@
 package com.project.magicurl.service;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.project.magicurl.constant.MagicUrlConstant;
 import com.project.magicurl.entity.GenerateUrlRequest;
 import com.project.magicurl.entity.GenerateUrlResponse;
+
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,34 +16,34 @@ import java.util.regex.Pattern;
 public class GenerateUrlServiceImpl implements GenerateUrlService{
 
 	@Override
-	public GenerateUrlResponse createShortUrl(GenerateUrlRequest request) {
+	public ResponseEntity<GenerateUrlResponse> createShortUrl(GenerateUrlRequest request) {
 		GenerateUrlResponse response = new GenerateUrlResponse();
 		String contentType = validContentType(request.getContent_type());
 		if(MagicUrlConstant.CONTENT_ERROR.equals(contentType)) {
 			response.setResponse_message(MagicUrlConstant.INVALID_CONTENT_TYPE_ERROR_MSG);
-			return response;
+			return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
 		}
 		if (MagicUrlConstant.CONTENT_LINK.equals(contentType)){
 			if(!validLink(request.getContent())) {
 				response.setResponse_message(MagicUrlConstant.INVALID_LINK_ERROR_MSG);
-				return response;
+				return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
 			}
 		}
 		if(request.getUser_name()!= null && !request.getUser_name().isEmpty()) {
 			if(!userNameFound(request.getUser_name())) {
 				response.setResponse_message(MagicUrlConstant.INVALID_USERNAME_ERROR_MSG);
-				return response;
+				return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
 			}
 		}
 		
 		String shortUrl = insertContentIntoDb(request);
 		if(shortUrl.isEmpty()){
 			response.setResponse_message(MagicUrlConstant.GENERATE_URL_ERROR_MSG);
-			return response;
+			return new ResponseEntity<>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		response.setShortUrl(shortUrl);
 		response.setResponse_message(MagicUrlConstant.SUCCESS_GENRATE_URL_MSG);	
-		return response;
+		return new ResponseEntity<>(response,HttpStatus.CREATED);
 	}
 
 	@Override
@@ -65,7 +69,7 @@ public class GenerateUrlServiceImpl implements GenerateUrlService{
 
 	@Override
 	public boolean userNameFound(String user_name) {
-		// TODO Auto-generated method stub
+		//Need to check for user name in DB
 		return true;
 	}
 
@@ -82,9 +86,19 @@ public class GenerateUrlServiceImpl implements GenerateUrlService{
 
 	@Override
 	public String insertContentIntoDb(GenerateUrlRequest request) {
-		
-		
+		/**
+		 * Need to implement the data base connection and insert data
+		 */
 		return "https://localhost";
+	}
+
+	@Override
+	public String generateUniqueID() {
+		/**
+		 * Need to generate unique id ,currently using UUID 
+		 */
+		
+		return UUID.randomUUID().toString().replace("-", "");
 	}
 
 	

@@ -5,7 +5,7 @@ public class MagicUrlConstant {
 	public static final String CONTENT_MESSAGE = "MESSAGE";
 	public static final String CONTENT_LINK = "LINK";
 	public static final String CONTENT_ERROR = "ERROR";
-	public static final String INVALID_CONTENT_ERROR_MSG = "Invalid content passed, Conent cannot be null or empty";
+	public static final String INVALID_CONTENT_ERROR_MSG = "Invalid content passed, Content cannot be null or empty";
 	public static final String INVALID_CONTENT_TYPE_ERROR_MSG = "Invalid content Type passed , Pass content type as link or message";
 	public static final String INVALID_LINK_ERROR_MSG = "Invalid link passed , Pass valid link";
 	public static final String INVALID_USERNAME_ERROR_MSG = "Invalid username passed , Pass valid username";

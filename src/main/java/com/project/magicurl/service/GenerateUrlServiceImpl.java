@@ -29,7 +29,7 @@ public class GenerateUrlServiceImpl implements GenerateUrlService{
 				return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
 			}
 		}
-		if(validContent(request.getContent())) {
+		if(!validContent(request.getContent())) {
 			response.setResponse_message(MagicUrlConstant.INVALID_CONTENT_ERROR_MSG);
 			return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
 		}

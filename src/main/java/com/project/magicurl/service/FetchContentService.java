@@ -10,7 +10,7 @@ public interface FetchContentService {
 	
 	public boolean isURLprsent(String url);
 	
-	public boolean isContentExpired(String expiryTime);
+	public boolean isContentExpired(Integer expiryTime);
 	
 	public FetchContentResponse retriveContentFromDB(String url);
 }

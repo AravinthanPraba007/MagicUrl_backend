@@ -11,6 +11,8 @@ public interface GenerateUrlService {
 	
 	public boolean validLink(String url);
 	
+	public boolean validContent(String content);
+	
 	public boolean userNameFound(String user_name);
 	
 	public String validContentType(String content_type);

@@ -29,6 +29,10 @@ public class GenerateUrlServiceImpl implements GenerateUrlService{
 				return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
 			}
 		}
+		if(validContent(request.getContent())) {
+			response.setResponse_message(MagicUrlConstant.INVALID_CONTENT_ERROR_MSG);
+			return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+		}
 		if(request.getUser_name()!= null && !request.getUser_name().isEmpty()) {
 			if(!userNameFound(request.getUser_name())) {
 				response.setResponse_message(MagicUrlConstant.INVALID_USERNAME_ERROR_MSG);
@@ -99,6 +103,15 @@ public class GenerateUrlServiceImpl implements GenerateUrlService{
 		 */
 		
 		return UUID.randomUUID().toString().replace("-", "");
+	}
+
+	@Override
+	public boolean validContent(String content) {
+		// TODO Auto-generated method stub
+		if(content==null || content.isEmpty())
+			return false;
+		else
+			return true;
 	}
 
 	

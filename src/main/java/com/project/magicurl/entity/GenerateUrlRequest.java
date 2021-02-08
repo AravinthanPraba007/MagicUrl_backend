@@ -1,8 +1,6 @@
 package com.project.magicurl.entity;
 
-import org.springframework.stereotype.Component;
 
-@Component
 public class GenerateUrlRequest {
 
 	String content;

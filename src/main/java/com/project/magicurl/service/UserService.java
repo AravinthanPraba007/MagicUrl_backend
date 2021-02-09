@@ -4,6 +4,8 @@ import org.springframework.http.ResponseEntity;
 
 import com.project.magicurl.model.UserRegisterRequest;
 import com.project.magicurl.model.UserRegisterResponse;
+import com.project.magicurl.model.UserSignInRequest;
+import com.project.magicurl.model.UserSignInResponse;
 
 public interface UserService {
 
@@ -12,5 +14,7 @@ public interface UserService {
 	public boolean isUserNameAvailable(String userName);
 	
 	public UserRegisterResponse insertUserIntoDb(UserRegisterRequest request);
+	
+	public ResponseEntity<UserSignInResponse> authenticateUser(UserSignInRequest request);
 
 }

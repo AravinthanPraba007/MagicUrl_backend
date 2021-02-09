@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import com.project.magicurl.constant.MagicUrlConstant;
 import com.project.magicurl.model.UserRegisterRequest;
 import com.project.magicurl.model.UserRegisterResponse;
+import com.project.magicurl.model.UserSignInRequest;
+import com.project.magicurl.model.UserSignInResponse;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -40,6 +42,12 @@ public class UserServiceImpl implements UserService{
 		UserRegisterResponse db_data = new UserRegisterResponse();
 		db_data.setResponse_message(MagicUrlConstant.SUCCESS_USER_REGISTERED);
 		return db_data;
+	}
+
+	@Override
+	public ResponseEntity<UserSignInResponse> authenticateUser(UserSignInRequest request) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

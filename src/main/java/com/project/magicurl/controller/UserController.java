@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.magicurl.model.UserRegisterRequest;
 import com.project.magicurl.model.UserRegisterResponse;
+import com.project.magicurl.model.UserSignInRequest;
+import com.project.magicurl.model.UserSignInResponse;
 import com.project.magicurl.service.UserService;
 
 @RestController
@@ -19,5 +21,10 @@ public class UserController {
 	@PostMapping("/register")
 	public ResponseEntity<UserRegisterResponse> userRegisteration(@RequestBody UserRegisterRequest request) {
 		return userService.registerUser(request);
+	}
+	
+	@PostMapping("/signIn")
+	public ResponseEntity<UserSignInResponse> userSignIn(@RequestBody UserSignInRequest request) {
+		return userService.authenticateUser(request);
 	}
 }

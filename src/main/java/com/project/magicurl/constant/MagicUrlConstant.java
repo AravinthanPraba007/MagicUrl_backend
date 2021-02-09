@@ -24,6 +24,11 @@ public class MagicUrlConstant {
 	public static final String USER_NOT_AVAILABALE = "USername already taken , try another username";
 	public static final String SUCCESS_USER_REGISTERED = "Account created successfully";
 	public static final String USER_REGISTRATION_ERROR_MSG = "Unable to crate account , please try again later, Facing internal error/ db connection issue";
+
+	public static final String PASSWORD_INVALID = "Incorrect Password";
+	public static final String USERNAME_INVALID = "User name not found";
+	public static final String SIGN_IN_SUCESS_MSG = "SignIn Successfull";
+	public static final String USER_SIGN_IN_ERROR_MSG = "Unable to signIn , please try again later, Facing internal error/ db connection issue";
 	
 	
 }

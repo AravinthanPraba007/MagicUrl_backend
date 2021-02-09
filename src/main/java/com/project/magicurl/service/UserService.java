@@ -16,5 +16,9 @@ public interface UserService {
 	public UserRegisterResponse insertUserIntoDb(UserRegisterRequest request);
 	
 	public ResponseEntity<UserSignInResponse> authenticateUser(UserSignInRequest request);
+	
+	public UserSignInResponse getUserFromDb(UserSignInRequest userRequest);
+	
+	public String validateUser(UserSignInRequest userRequest, UserSignInRequest dbResponse);
 
 }

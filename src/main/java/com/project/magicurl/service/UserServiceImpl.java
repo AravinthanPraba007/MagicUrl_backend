@@ -50,4 +50,21 @@ public class UserServiceImpl implements UserService{
 		return null;
 	}
 
+	@Override
+	public UserSignInResponse getUserFromDb(UserSignInRequest userRequest) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String validateUser(UserSignInRequest userRequest, UserSignInRequest dbResponse) {
+		/**
+		 * Current validation is password level
+		 */
+		if(userRequest.getPassword().equals(dbResponse.getPassword()))
+			return MagicUrlConstant.SIGN_IN_SUCESS_MSG;
+		else 
+			return MagicUrlConstant.PASSWORD_INVALID;
+	}
+
 }

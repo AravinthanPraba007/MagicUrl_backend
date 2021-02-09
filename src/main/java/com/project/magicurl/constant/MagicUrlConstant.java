@@ -30,5 +30,9 @@ public class MagicUrlConstant {
 	public static final String SIGN_IN_SUCESS_MSG = "SignIn Successfull";
 	public static final String USER_SIGN_IN_ERROR_MSG = "Unable to signIn , please try again later, Facing internal error/ db connection issue";
 	
+//	Fetching Magic urls constants
+	public static final String USERNAME_EMPTY = "UserName cant be empty";
+	public static final String NO_MAGICURL_FOUND = "No Magic urls found";
+	public static final String MAGIC_URLS_RETRIVAL_SUCCESS = "Retrived magic Urls successfully";
 	
 }

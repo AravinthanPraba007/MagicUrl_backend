@@ -20,6 +20,10 @@ public class MagicUrlConstant {
 	public static final String FETCH_CONTENT_ERROR_MSG = "Unable to fetch the content, Please try again later. Facing internal error/ DB connection issue";
 	
 	
+//	User registerartion/signin Constants
+	public static final String USER_NOT_AVAILABALE = "USername already taken , try another username";
+	public static final String SUCCESS_USER_REGISTERED = "Account created successfully";
+	public static final String USER_REGISTRATION_ERROR_MSG = "Unable to crate account , please try again later, Facing internal error/ db connection issue";
 	
 	
 }

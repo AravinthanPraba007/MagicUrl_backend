@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.magicurl.entity.GenerateUrlRequest;
-import com.project.magicurl.entity.GenerateUrlResponse;
+import com.project.magicurl.model.GenerateUrlRequest;
+import com.project.magicurl.model.GenerateUrlResponse;
 import com.project.magicurl.service.GenerateUrlService;
 
 @RestController

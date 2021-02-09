@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.project.magicurl.constant.MagicUrlConstant;
-import com.project.magicurl.entity.FetchContentResponse;
+import com.project.magicurl.model.FetchContentResponse;
 
 public class FetchContentServiceImpl implements FetchContentService{
 

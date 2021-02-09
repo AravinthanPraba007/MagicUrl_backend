@@ -1,4 +1,4 @@
-package com.project.magicurl.entity;
+package com.project.magicurl.model;
 
 public class FetchContentResponse {
 

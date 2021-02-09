@@ -5,8 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.project.magicurl.constant.MagicUrlConstant;
-import com.project.magicurl.entity.GenerateUrlRequest;
-import com.project.magicurl.entity.GenerateUrlResponse;
+import com.project.magicurl.model.GenerateUrlRequest;
+import com.project.magicurl.model.GenerateUrlResponse;
 
 import java.util.UUID;
 import java.util.regex.Matcher;

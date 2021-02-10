@@ -104,13 +104,13 @@ public class GenerateUrlServiceImpl implements GenerateUrlService{
 		 * Need to implement the data base connection and insert data
 		 */
 		MagicUrl dbData = new MagicUrl();
-		String shortUrl = env.getProperty("generate.baseurl")+generateUniqueID();
+		String shortUrl = generateUniqueID();
 		dbData.setContent_type(request.getContent_type());
 		dbData.setContent(request.getContent());
 		dbData.setExpiry_time(request.getExpiry_time());
 		dbData.setShortUrl(shortUrl);
 		MagicUrl dbResponse = magicUrlRepo.save(dbData);
-		return dbResponse.getShortUrl();
+		return (env.getProperty("generate.baseurl")+dbResponse.getShortUrl());
 	}
 
 	@Override

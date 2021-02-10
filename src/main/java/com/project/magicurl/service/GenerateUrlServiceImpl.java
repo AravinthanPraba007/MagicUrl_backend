@@ -1,12 +1,16 @@
 package com.project.magicurl.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.project.magicurl.constant.MagicUrlConstant;
+import com.project.magicurl.entity.MagicUrl;
 import com.project.magicurl.model.GenerateUrlRequest;
 import com.project.magicurl.model.GenerateUrlResponse;
+import com.project.magicurl.repository.MagicUrlRepository;
 
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -14,6 +18,12 @@ import java.util.regex.Pattern;
 
 @Service
 public class GenerateUrlServiceImpl implements GenerateUrlService{
+	
+	@Autowired
+	MagicUrlRepository magicUrlRepo;
+	
+	@Autowired
+	private Environment env;
 
 	@Override
 	public ResponseEntity<GenerateUrlResponse> createShortUrl(GenerateUrlRequest request) {
@@ -93,7 +103,14 @@ public class GenerateUrlServiceImpl implements GenerateUrlService{
 		/**
 		 * Need to implement the data base connection and insert data
 		 */
-		return "https://localhost";
+		MagicUrl dbData = new MagicUrl();
+		String shortUrl = env.getProperty("generate.baseurl")+generateUniqueID();
+		dbData.setContent_type(request.getContent_type());
+		dbData.setContent(request.getContent());
+		dbData.setExpiry_time(request.getExpiry_time());
+		dbData.setShortUrl(shortUrl);
+		MagicUrl dbResponse = magicUrlRepo.save(dbData);
+		return dbResponse.getShortUrl();
 	}
 
 	@Override

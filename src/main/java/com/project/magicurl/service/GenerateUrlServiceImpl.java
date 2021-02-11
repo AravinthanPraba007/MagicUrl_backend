@@ -15,6 +15,7 @@ import com.project.magicurl.repository.MagicUrlRepository;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.Base64;
 
 @Service
 public class GenerateUrlServiceImpl implements GenerateUrlService{
@@ -116,10 +117,11 @@ public class GenerateUrlServiceImpl implements GenerateUrlService{
 	@Override
 	public String generateUniqueID() {
 		/**
-		 * Need to generate unique id ,currently using UUID 
+		 * Need to generate unique id ,currently using UUID and base64 encoding
 		 */
-		
-		return UUID.randomUUID().toString().replace("-", "");
+		String uuid_value = UUID.randomUUID().toString().substring(0,6).replace("-", "");
+		String id = Base64.getEncoder().encodeToString(uuid_value.getBytes());
+		return id;
 	}
 
 	@Override

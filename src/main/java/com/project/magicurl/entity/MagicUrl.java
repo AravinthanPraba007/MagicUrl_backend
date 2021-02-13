@@ -12,8 +12,8 @@ public class MagicUrl {
 	private String content;
 	private String content_type;
 	private String user_name;
-	private Integer created_timeStamp;
-	private Integer expiry_timeStamp;
+	private String created_timeStamp;
+	private String expiry_timeStamp;
 	private Integer expiry_time;
 	
 	public String getId() {
@@ -46,16 +46,16 @@ public class MagicUrl {
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
-	public Integer getCreated_timeStamp() {
+	public String getCreated_timeStamp() {
 		return created_timeStamp;
 	}
-	public void setCreated_timeStamp(Integer created_timeStamp) {
+	public void setCreated_timeStamp(String created_timeStamp) {
 		this.created_timeStamp = created_timeStamp;
 	}
-	public Integer getExpiry_timeStamp() {
+	public String getExpiry_timeStamp() {
 		return expiry_timeStamp;
 	}
-	public void setExpiry_timeStamp(Integer expiry_timeStamp) {
+	public void setExpiry_timeStamp(String expiry_timeStamp) {
 		this.expiry_timeStamp = expiry_timeStamp;
 	}
 	public Integer getExpiry_time() {

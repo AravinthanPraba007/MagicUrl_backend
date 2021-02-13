@@ -118,6 +118,9 @@ public class GenerateUrlServiceImpl implements GenerateUrlService{
 		dbData.setContent(request.getContent());
 		dbData.setExpiry_time(request.getExpiry_time());
 		dbData.setShortUrl(shortUrl);
+		Long currentTime = System.currentTimeMillis();
+		dbData.setCreated_timeStamp(String.valueOf(currentTime));
+		dbData.setExpiry_timeStamp(String.valueOf(currentTime+request.getExpiry_time()));
 		MagicUrl dbResponse = magicUrlRepo.save(dbData);
 		return (env.getProperty("generate.baseurl")+dbResponse.getShortUrl());
 	}
@@ -135,7 +138,8 @@ public class GenerateUrlServiceImpl implements GenerateUrlService{
 	@Override
 	public boolean validContent(String content) {
 		// TODO Auto-generated method stub
-		if(content==null || content.isEmpty())
+		String trim_content = content.trim();
+		if(trim_content==null || trim_content.isEmpty())
 			return false;
 		else
 			return true;

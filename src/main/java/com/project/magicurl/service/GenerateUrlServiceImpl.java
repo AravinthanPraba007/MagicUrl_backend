@@ -34,6 +34,14 @@ public class GenerateUrlServiceImpl implements GenerateUrlService{
 	@Override
 	public ResponseEntity<GenerateUrlResponse> createShortUrl(GenerateUrlRequest request) {
 		GenerateUrlResponse response = new GenerateUrlResponse();
+		if(request==null) {
+			response.setResponse_message(MagicUrlConstant.INVALID_REQUEST);
+			return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+		}
+		if(!MagicUrlConstant.VALID_EXPIRYTIME.equals(validExpiryTime(request.getExpiry_time()))) {
+			response.setResponse_message(MagicUrlConstant.INVALID_EXPIRYTIME_ERROR_MSG);
+			return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+		}
 		String contentType = validContentType(request.getContent_type());
 		if(MagicUrlConstant.CONTENT_ERROR.equals(contentType)) {
 			response.setResponse_message(MagicUrlConstant.INVALID_CONTENT_TYPE_ERROR_MSG);
@@ -143,6 +151,15 @@ public class GenerateUrlServiceImpl implements GenerateUrlService{
 			return false;
 		else
 			return true;
+	}
+
+	@Override
+	public String validExpiryTime(Integer expiryTime) {
+		// TODO Auto-generated method stub
+		if(expiryTime<60000)
+			return MagicUrlConstant.INVALID_EXPIRYTIME_ERROR_MSG;
+		
+		return MagicUrlConstant.VALID_EXPIRYTIME;
 	}
 
 	

@@ -21,4 +21,6 @@ public interface GenerateUrlService {
 	
 	public String generateUniqueID();
 	
+	public String validExpiryTime(Integer expiryTime);
+	
 }

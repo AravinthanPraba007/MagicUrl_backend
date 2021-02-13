@@ -1,24 +1,30 @@
 package com.project.magicurl.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.project.magicurl.constant.MagicUrlConstant;
+import com.project.magicurl.entity.User;
 import com.project.magicurl.model.UserRegisterRequest;
 import com.project.magicurl.model.UserRegisterResponse;
 import com.project.magicurl.model.UserSignInRequest;
 import com.project.magicurl.model.UserSignInResponse;
+import com.project.magicurl.repository.UserDataRepository;
 
 @Service
 public class UserServiceImpl implements UserService{
+	
+	@Autowired
+	UserDataRepository userRepo;
 
 	@Override
 	public ResponseEntity<UserRegisterResponse> registerUser(UserRegisterRequest request) {
 		// TODO Auto-generated method stub
 		UserRegisterResponse response = new UserRegisterResponse();
 		if(!isUserNameAvailable(request.getUserName())) {
-			response.setResponse_message(MagicUrlConstant.USER_NOT_AVAILABALE);
+			response.setResponse_message(MagicUrlConstant.USERNAME_NOT_AVAILABALE);
 			return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
 		}
 		UserRegisterResponse db_response = insertUserIntoDb(request);
@@ -33,15 +39,23 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public boolean isUserNameAvailable(String userName) {
 		// TODO Auto-generated method stub
-		return true;
+		User db_data = userRepo.findByUserName(userName);
+		if(db_data==null || db_data.getUser_name()==null || db_data.getUser_name().isEmpty())
+			return true;
+		return false;
 	}
 
 	@Override
 	public UserRegisterResponse insertUserIntoDb(UserRegisterRequest request) {
 		// TODO Auto-generated method stub
-		UserRegisterResponse db_data = new UserRegisterResponse();
-		db_data.setResponse_message(MagicUrlConstant.SUCCESS_USER_REGISTERED);
-		return db_data;
+		User db_data = new User();
+		db_data.setUser_name(request.getUserName());
+		db_data.setPassword(request.getPassword());
+		User db_response = userRepo.save(db_data);
+		UserRegisterResponse response = new UserRegisterResponse();
+		if(db_response.getUser_name()!= null || !db_response.getUser_name().isEmpty())
+		response.setResponse_message(MagicUrlConstant.SUCCESS_USER_REGISTERED);
+		return response;
 	}
 
 	@Override

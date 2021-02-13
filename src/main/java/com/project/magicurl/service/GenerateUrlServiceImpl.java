@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.project.magicurl.constant.MagicUrlConstant;
 import com.project.magicurl.entity.MagicUrl;
+import com.project.magicurl.entity.User;
 import com.project.magicurl.model.GenerateUrlRequest;
 import com.project.magicurl.model.GenerateUrlResponse;
 import com.project.magicurl.repository.MagicUrlRepository;
+import com.project.magicurl.repository.UserDataRepository;
 
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -22,6 +24,9 @@ public class GenerateUrlServiceImpl implements GenerateUrlService{
 	
 	@Autowired
 	MagicUrlRepository magicUrlRepo;
+	
+	@Autowired
+	UserDataRepository userRepo;
 	
 	@Autowired
 	private Environment env;
@@ -85,7 +90,10 @@ public class GenerateUrlServiceImpl implements GenerateUrlService{
 	@Override
 	public boolean userNameFound(String user_name) {
 		//Need to check for user name in DB
-		return true;
+		User db_data = userRepo.findByUserName(user_name);
+		if(db_data != null && db_data.getUser_name()!=null && db_data.getUser_name().equals(user_name))
+			return true;
+		return false;
 	}
 
 	@Override

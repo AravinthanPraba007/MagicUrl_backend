@@ -61,17 +61,33 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public ResponseEntity<UserSignInResponse> authenticateUser(UserSignInRequest request) {
 		// TODO Auto-generated method stub
-		return null;
+		UserSignInResponse response_data = new UserSignInResponse();
+		User db_data = new User();
+		db_data = getUserFromDb(request);
+		if(db_data==null) {
+			response_data.setResponse_message(MagicUrlConstant.USERNAME_INVALID);
+			return new ResponseEntity<>(response_data,HttpStatus.BAD_REQUEST);
+		}
+		if(!MagicUrlConstant.SIGN_IN_SUCESS_MSG.equals(validateUser(request, db_data))) {
+			response_data.setResponse_message(MagicUrlConstant.PASSWORD_INVALID);
+			return new ResponseEntity<>(response_data,HttpStatus.BAD_REQUEST);
+		}
+		response_data.setUser_name(db_data.getUser_name());
+		response_data.setResponse_message(MagicUrlConstant.SIGN_IN_SUCESS_MSG);
+		return new ResponseEntity<>(response_data,HttpStatus.OK);
 	}
 
 	@Override
-	public UserSignInResponse getUserFromDb(UserSignInRequest userRequest) {
+	public User getUserFromDb(UserSignInRequest userRequest) {
 		// TODO Auto-generated method stub
-		return null;
+		User db_data = userRepo.findByUserName(userRequest.getUser_name());
+		if(db_data==null || db_data.getUser_name()==null || db_data.getUser_name().isEmpty())
+			return null;
+		return db_data;
 	}
 
 	@Override
-	public String validateUser(UserSignInRequest userRequest, UserSignInRequest dbResponse) {
+	public String validateUser(UserSignInRequest userRequest, User dbResponse) {
 		/**
 		 * Current validation is password level
 		 */

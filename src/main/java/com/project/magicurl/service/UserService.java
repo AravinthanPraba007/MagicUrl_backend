@@ -2,6 +2,7 @@ package com.project.magicurl.service;
 
 import org.springframework.http.ResponseEntity;
 
+import com.project.magicurl.entity.User;
 import com.project.magicurl.model.UserRegisterRequest;
 import com.project.magicurl.model.UserRegisterResponse;
 import com.project.magicurl.model.UserSignInRequest;
@@ -17,8 +18,8 @@ public interface UserService {
 	
 	public ResponseEntity<UserSignInResponse> authenticateUser(UserSignInRequest request);
 	
-	public UserSignInResponse getUserFromDb(UserSignInRequest userRequest);
+	public User getUserFromDb(UserSignInRequest userRequest);
 	
-	public String validateUser(UserSignInRequest userRequest, UserSignInRequest dbResponse);
+	public String validateUser(UserSignInRequest userRequest, User dbResponse);
 
 }

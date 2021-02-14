@@ -12,6 +12,9 @@ import com.project.magicurl.model.UserSignInRequest;
 import com.project.magicurl.model.UserSignInResponse;
 import com.project.magicurl.service.UserService;
 
+import springfox.documentation.annotations.ApiIgnore;
+
+@ApiIgnore
 @RestController
 public class UserController {
 	

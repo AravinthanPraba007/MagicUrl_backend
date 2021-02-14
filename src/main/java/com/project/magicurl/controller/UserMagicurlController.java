@@ -10,6 +10,9 @@ import com.project.magicurl.model.RetriveMagicUrlsRequest;
 import com.project.magicurl.model.RetriveMagicUrlsResponse;
 import com.project.magicurl.service.FetchMagicurlsService;
 
+import springfox.documentation.annotations.ApiIgnore;
+
+@ApiIgnore
 @RestController
 public class UserMagicurlController {
 	

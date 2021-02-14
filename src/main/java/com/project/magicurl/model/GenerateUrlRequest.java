@@ -1,11 +1,28 @@
 package com.project.magicurl.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+@ApiModel(description = "Genrate Magic URL request")
 public class GenerateUrlRequest {
-
+	@ApiModelProperty(name = "Content",
+			required = true, 
+			notes = "Enter the content",
+			example = "Hello this is a secret message")
 	String content;
+	@ApiModelProperty(name = "Content Type",
+			required = true, 
+			notes = "Enter the content type (link / message)",
+			allowableValues = "link,message",
+			example = "message")
 	String content_type;
+	@ApiModelProperty(hidden = true)
 	String user_name;
+	@ApiModelProperty(name = "Expiry Time",
+			required = true, 
+			notes = "Enter the expiry time(ms) allowed time range 1min to 60mins",
+			allowableValues = "range[60000,3600000]",
+			example = "600000")
 	Integer expiry_time;
 	public GenerateUrlRequest() {
 		super();

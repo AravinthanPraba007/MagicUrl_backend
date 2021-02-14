@@ -1,7 +1,5 @@
 package com.project.magicurl.swagger;
 
-import java.net.URL;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

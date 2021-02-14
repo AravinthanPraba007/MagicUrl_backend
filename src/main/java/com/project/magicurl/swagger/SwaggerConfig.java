@@ -29,7 +29,7 @@ public class SwaggerConfig {
 
 	private ApiInfo apiEndPointsInfo() {
 		return new ApiInfoBuilder().title("Magic Url Rest API Documentation")
-				.description("Create a short, temporary, self-destructing short URL for your message or link and Share the generated Magic Url"
+				.description("Create a temporary, self-destructing short URL for your message or link and Share the generated Magic Url"
 						+ "\n Developer : Aravinthan \n")
 				.contact(new Contact("Aravinthan", "https://www.linkedin.com/in/aravinthan-p/", null)).build();
 	}

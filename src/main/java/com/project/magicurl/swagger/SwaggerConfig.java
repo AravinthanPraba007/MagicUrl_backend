@@ -1,5 +1,7 @@
 package com.project.magicurl.swagger;
 
+import java.net.URL;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -26,8 +28,9 @@ public class SwaggerConfig {
 	}
 
 	private ApiInfo apiEndPointsInfo() {
-		return new ApiInfoBuilder().title("Magic Url Rest API")
-				.description("Create a short, temporary, self-destructing link to a message or link")
+		return new ApiInfoBuilder().title("Magic Url Rest API Documentation")
+				.description("Create a short, temporary, self-destructing link to a message or link "
+						+ "\n Developer : Aravinthan \n")
 				.contact(new Contact("Aravinthan", "https://www.linkedin.com/in/aravinthan-p/", null)).build();
 	}
 }

@@ -34,5 +34,12 @@ public class MagicUrlData {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	@Override
+	public String toString() {
+		return "MagicUrlData [MagicURL=" + MagicURL + ", contentType=" + contentType + ", content=" + content
+				+ ", isExpired=" + isExpired + "]";
+	}
+	
 
 }

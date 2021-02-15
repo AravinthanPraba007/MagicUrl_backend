@@ -126,6 +126,7 @@ public class GenerateUrlServiceImpl implements GenerateUrlService{
 		dbData.setContent(request.getContent());
 		dbData.setExpiry_time(request.getExpiry_time());
 		dbData.setShortUrl(shortUrl);
+		dbData.setUser_name(request.getUser_name());
 		Long currentTime = System.currentTimeMillis();
 		dbData.setCreated_timeStamp(String.valueOf(currentTime));
 		dbData.setExpiry_timeStamp(String.valueOf(currentTime+request.getExpiry_time()));

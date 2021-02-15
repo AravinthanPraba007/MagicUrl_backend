@@ -23,5 +23,10 @@ public class RetriveMagicUrlsResponse {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "RetriveMagicUrlsResponse [data=" + data + ", response_message=" + response_message + "]";
+	}
+	
 	
 }

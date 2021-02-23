@@ -24,6 +24,15 @@ public class GenerateUrlRequest {
 			allowableValues = "range[60000,86400000]",
 			example = "600000")
 	Integer expiry_time;
+	
+	String systemUrl;
+	
+	public String getSystemUrl() {
+		return systemUrl;
+	}
+	public void setSystemUrl(String systemUrl) {
+		this.systemUrl = systemUrl;
+	}
 	public GenerateUrlRequest() {
 		super();
 		// TODO Auto-generated constructor stub

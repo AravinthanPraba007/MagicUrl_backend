@@ -131,7 +131,12 @@ public class GenerateUrlServiceImpl implements GenerateUrlService{
 		dbData.setCreated_timeStamp(String.valueOf(currentTime));
 		dbData.setExpiry_timeStamp(String.valueOf(currentTime+request.getExpiry_time()));
 		MagicUrl dbResponse = magicUrlRepo.save(dbData);
-		return (env.getProperty("generate.baseurl")+dbResponse.getShortUrl());
+		String prefixUrl ="";
+		if(request.getSystemUrl()!=null && !request.getSystemUrl().isEmpty())
+			prefixUrl=request.getSystemUrl();
+		else
+			prefixUrl=env.getProperty("generate.baseurl");
+		return (prefixUrl+dbResponse.getShortUrl());
 	}
 
 	@Override

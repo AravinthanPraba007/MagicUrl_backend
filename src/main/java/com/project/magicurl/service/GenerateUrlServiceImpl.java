@@ -157,7 +157,7 @@ public class GenerateUrlServiceImpl implements GenerateUrlService{
 	@Override
 	public String validExpiryTime(Integer expiryTime) {
 		// TODO Auto-generated method stub
-		if(expiryTime<60000 || expiryTime>3600000)
+		if(expiryTime<60000 || expiryTime>86400000)
 			return MagicUrlConstant.INVALID_EXPIRYTIME_ERROR_MSG;
 		
 		return MagicUrlConstant.VALID_EXPIRYTIME;

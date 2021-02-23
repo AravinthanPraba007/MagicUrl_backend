@@ -20,8 +20,8 @@ public class GenerateUrlRequest {
 	String user_name;
 	@ApiModelProperty(name = "Expiry Time",
 			required = true, 
-			notes = "Enter the expiry time(ms) allowed time range 1min to 60mins",
-			allowableValues = "range[60000,3600000]",
+			notes = "Enter the expiry time(ms) allowed time range 1min to 1 day",
+			allowableValues = "range[60000,86400000]",
 			example = "600000")
 	Integer expiry_time;
 	public GenerateUrlRequest() {
